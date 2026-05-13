@@ -14,26 +14,33 @@ Aplicación frontend desarrollada en React y Vite para la gestión visual de des
 - Node.js 18+
 - npm 9+
 
-## Instalación y ejecución
+## Instalación y ejecución local
 
 1. Clona el repositorio:
    ```sh
    git clone https://github.com/tu_usuario/front-despacho-devops-ev2.git
    cd front-despacho-devops-ev2
-
-   cd front-despacho-devops-ev2
-   2. Instala las dependencias:
+   ```
+2. Instala las dependencias y ejecuta en modo desarrollo:
    ```sh
    npm install
    npm run dev
+   ```
+   La app estará disponible en [http://localhost:5173](http://localhost:5173)
 
-      La app estará disponible en [http://localhost:5173](http://localhost:5173)
+## Despliegue con Docker Compose
+
+1. Construye y levanta el contenedor:
+   ```sh
+   docker-compose up --build -d
+   ```
+2. El frontend estará disponible en [http://localhost](http://localhost)
 
 ## Configuración
 
-- Edita las URLs de los microservicios backend en los archivos de servicios (por ejemplo, en `src/componentes/` o donde uses Axios) para apuntar a los puertos correctos (8080, 8088, etc.).
+- Edita las variables de entorno en el archivo `docker-compose.yml` para apuntar a los endpoints correctos de los backends (puertos 8081 y 8088).
 
-## Despliegue
+## Despliegue manual (build de producción)
 
 - Para generar la versión de producción:
   ```sh
