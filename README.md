@@ -28,13 +28,18 @@ Aplicación frontend desarrollada en React y Vite para la gestión visual de des
    ```
    La app estará disponible en [http://localhost:5173](http://localhost:5173)
 
-## Despliegue con Docker Compose
 
-1. Construye y levanta el contenedor:
+## Despliegue con Docker
+
+1. Construye la imagen Docker:
    ```sh
-   docker-compose up --build -d
+   docker build -t front-despacho .
    ```
-2. El frontend estará disponible en [http://localhost](http://localhost)
+2. Ejecuta el contenedor:
+   ```sh
+   docker run -d -p 5173:80 front-despacho
+   ```
+   El frontend estará disponible en [http://localhost:5173](http://localhost:5173)
 
 ## Configuración
 
