@@ -47,5 +47,5 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --parameters commands="docker pull ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} && \
             docker stop despacho-frontend || true && docker rm despacho-frontend || true && \
-            docker run -d --name despacho-frontend -p 80:80 ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}" \
+            docker run -d --name despacho-frontend -p 80:8080 ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}" \
             --region ${{ env.AWS_REGION }}
