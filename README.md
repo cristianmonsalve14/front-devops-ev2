@@ -43,7 +43,9 @@ Aplicación frontend desarrollada en React y Vite para la gestión visual de des
 
 ## Configuración
 
-- Edita las variables de entorno en el archivo `docker-compose.yml` para apuntar a los endpoints correctos de los backends (puertos 8081 y 8088).
+- Las URLs de los backends se configuran mediante variables de entorno al momento de ejecutar el contenedor.
+- Backend Despachos: puerto 8081
+- Backend Ventas: puerto 8088
 
 ## Despliegue manual (build de producción)
 
