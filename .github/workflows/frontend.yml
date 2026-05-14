@@ -3,7 +3,7 @@ name: CI/CD Deploy Frontend Despacho (AWS ECR + SSM)
 on:
   push:
     branches:
-      - deploy
+      - develop-front
 
 jobs:
   build-and-deploy:
