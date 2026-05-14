@@ -45,7 +45,5 @@ jobs:
           aws ssm send-command \
             --instance-ids ${{ secrets.EC2_INSTANCE_ID }} \
             --document-name "AWS-RunShellScript" \
-            --parameters commands="docker pull ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} && \
-            docker stop despacho-frontend || true && docker rm despacho-frontend || true && \
-            docker run -d --name despacho-frontend -p 80:8080 ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}" \
+            --parameters 'commands=["aws ecr get-login-password --region ${{ env.AWS_REGION }} | sudo docker login --username AWS --password-stdin ${{ steps.login-ecr.outputs.registry }}","sudo docker pull ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}","sudo docker stop despacho-frontend || true","sudo docker rm despacho-frontend || true","sudo docker run -d --name despacho-frontend -p 80:8080 ${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}"]' \
             --region ${{ env.AWS_REGION }}
