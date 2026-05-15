@@ -20,8 +20,11 @@ RUN adduser -D -u 1000 nginx-user && \
     touch /var/run/nginx.pid && \
     chown -R nginx-user:nginx-user /var/run/nginx.pid
 
+# Copiar configuración personalizada de nginx
+COPY --chown=nginx-user:nginx-user nginx.conf /etc/nginx/conf.d/default.conf
+
 COPY --from=builder --chown=nginx-user:nginx-user /app/dist /usr/share/nginx/html
 
 USER nginx-user
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
